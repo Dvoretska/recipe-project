@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ConfigService } from './config.service';
 import { BetterHighlightDirective } from './better-highlight/better-highlight.directive';
 import { UnlessDirective } from './unless.directive';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,14 +35,18 @@ import { UnlessDirective } from './unless.directive';
     ShoppingEditComponent,
     BasicHighlightDirective,
     BetterHighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    SignupComponent,
+    SigninComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    FormsModule
   ],
-  providers: [ConfigService],
+  providers: [ConfigService, ShoppingListService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
