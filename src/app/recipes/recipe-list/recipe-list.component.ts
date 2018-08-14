@@ -1,4 +1,5 @@
 import {Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
 import { ConfigService } from '../../config.service';
@@ -12,28 +13,15 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
 
-  constructor(private configService: ConfigService, private recipeService: RecipeService) { }
+  constructor(private configService: ConfigService, private recipeService: RecipeService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('recipeBe', this.recipes)
     this.recipes = this.recipeService.getRecipes();
-    console.log('recipeAf', this.recipes)
-  // this.configService.getRecipes()
-  //   .subscribe(res => {
-  //     console.log('res', res)
-  //     for(let item in res) {
-  //       for(let recipe of res[item]) {
-  //         this.recipes.push(new Recipe(recipe.name, recipe.description, recipe.imagePath));
-  //       }
-  //     }
-  //   }, err => console.log(err));
   }
-  //
-  // onSave() {
-  //   this.configService.storeRecipe(this.recipes)
-  //     .subscribe(
-  //       (response) => console.log(response),
-  //       (error) => console.log(error)
-  //     )
-  // }
+
+  onNewRecipe() {
+    this.router.navigate(['new'], {relativeTo: this.route})
+  }
 }

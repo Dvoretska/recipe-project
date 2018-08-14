@@ -22,6 +22,9 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AuthService } from './auth/auth.service';
+import { AppRoutingModule } from './app-routing.module';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +41,16 @@ import { AuthService } from './auth/auth.service';
     UnlessDirective,
     SignupComponent,
     SigninComponent,
-    DropdownDirective
+    DropdownDirective,
+    RecipeStartComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [ConfigService, ShoppingListService, AuthService],
   bootstrap: [AppComponent]
